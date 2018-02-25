@@ -40,14 +40,13 @@ class Simulation:
         self.pid_fixed = 0
         self.did = 0
         self.J1_Fixed = 0
-        self.J1_smart = 0
         self.timestep = 0
         self.grids = list()
 
         # Rates/datas
         self.data = {}
         self.name_data = [ "queue" , "wait_time" , "mean_speeds" , 'travel_time']
-        self.name_type = ["f","s"]
+        self.name_type = ["f"]
         for _ in self.name_data:
             self.data[_] = {}
             for __ in self.name_type:
@@ -144,7 +143,7 @@ class Simulation:
 
     def collect_data(self):
         for i in range(1, 5):
-            for j in ['f', 's'] :
+            for j in ['f'] :
                 self.data["wait_time"][j][i].append(self.traci.lane.getWaitingTime('l{}_{}_0'.format(i,j)))
                 self.averages["wait_time"][j][i] += self.data["wait_time"][j][i][self.timestep]
 
@@ -155,31 +154,7 @@ class Simulation:
                 self.averages["queue"][j][i] += self.data["queue"][j][i][self.timestep]
 
                 self.data['travel_time'][j][i].append( (self.traci.lane.getTraveltime('l{}_{}_0'.format(i,j)))/100000 )
-            self.J1_smart += self.data["queue"]['s'][i][self.timestep] if not i % 2 else 2 * self.data["queue"]['s'][i][self.timestep]
             self.J1_Fixed += self.data["queue"]['f'][i][self.timestep] if not i % 2 else 2 * self.data["queue"]['f'][i][self.timestep]
-
-    def prepare_solver_arguments(self) :
-        cycle = 6
-        start_context = [0,0,0,0]
-        x_max = [35, 35, 35, 35]
-        lambd = {}
-        mi = {}
-        ka = {}
-        light_time = {}
-        light_time['amber'] = self.amber_phase
-        light_time['min'] = [6,6]
-        light_time['max'] = [60,60]
-        green_time = [0,0]
-        for i in range(len(self.delta)):
-            green_time[i%2] += self.delta[i] - self.amber_phase
-        for i in range(4) :
-            start_context[i] = self.traci.lanearea.getJamLengthVehicle("e2_l{}_s".format(i+1))
-            mi[i+1] = (self.rates['departure'][i+1]) / float(green_time[(i+1)%2])
-            ka[i+1] = (self.rates['amber_departure'][i+1]) / float( (cycle // 2) * self.amber_phase )
-            lambd[i+1] = (self.rates['arrival'][i+1]) / float(self.cycle_time)
-        lane_weight = [1, 1, 1, 1]
-        return [cycle, start_context, x_max, lane_weight, lambd, mi, ka, light_time]
-
 
     def reset_rates(self) :
         self.rates = {}
@@ -187,35 +162,10 @@ class Simulation:
         self.rates['amber_departure'] = [0,0,0,0,0]
         self.rates['arrival'] = [0,0,0,0,0]
 
-    def update_delta(self) :
-        if self.cycle_time == sum(self.delta) :
-            self.grids.append(self.timestep)
-            # self.report()
-            self.cycle_number += 1
-
-            ret = self.prepare_solver_arguments()
-            my_solve = Solve.Solve(cycle=ret[0], start_context=ret[1], x_max=ret[2], lane_weight=ret[3], lambd=ret[4], mi=ret[5], ka=ret[6], light_time_limits=ret[7])
-            my_solve.setting_functions()
-            if (my_solve.try_solve() == 1) :
-                self.delta = my_solve.get_answer()
-            self.cycle_time = 0
-            self.tls_time = 0
-            self.did = 0
-            self.reset_rates()
-
     def update_tls(self):
         self.cycle_time += 1
         self.tls_time += 1
         self.tls_time_fixed += 1
-
-        # Update smart light
-        if self.tls_time == self.delta[self.did] - self.amber_phase:
-            self.traci.trafficlights.setRedYellowGreenState("center_2", self.program[self.pid+1])
-        elif self.tls_time == self.delta[self.did]:
-            self.tls_time = 0
-            self.pid = (self.pid + 2) % len(self.program)
-            self.did = (self.did + 1) % len(self.delta)
-            self.traci.trafficlights.setRedYellowGreenState("center_2", self.program[self.pid])
 
         # Update fixed light
         if self.tls_time_fixed == self.delta_fixed - self.amber_phase_fixed :
@@ -257,20 +207,7 @@ class Simulation:
         self.traci.trafficlights.setRedYellowGreenState("center", self.l1_green)
 
     def report(self):
-        self.manager.create("report/datas/Cycle{}".format(self.cycle_number))
-        mapping = {}
-        mapping['f'] = 'fixed'
-        mapping['s'] = 'smart'
-        for x in ["wait_time", "queue", "mean_speeds"] :
-            with open("report/datas/Cycle{}/average_{}.txt".format(self.cycle_number, x), "w") as files:
-                for i in range(1,5) :
-                    for j in ['f','s'] :
-                        print('Average {} {} - lane {} - {}'.format(mapping[j], x, i, float(self.averages[x][j][i])/float(self.timestep)), file=files)
-                    print('------------------------------', file=files)
-                if x == "queue" :
-                    print('self.J1_Fixed {} x {} self.J1_smart '.format(self.J1_Fixed, self.J1_smart), file=files)
-                    print('Media | Fixed {} x {} Smart'.format(float(self.J1_Fixed) / float(self.timestep), float(self.J1_smart) / float(self.timestep)), file=files)
-        files.close()
+        # Might be useful to return .JSON
 
     def get_averages(self):
         for i in self.name_data:
@@ -288,7 +225,6 @@ class Simulation:
             self.collect_arrival()
             self.collect_departure()
             self.update_tls()
-            self.update_delta()
             self.collect_data()
             self.timestep += 1
             self.runFlow()
