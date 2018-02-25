@@ -40,13 +40,14 @@ class Simulation:
 
         # Rates/datas
         self.data = {}
-        self.name_data = "wait_time"
-        for _ in self.name_data:
-            self.data[_] = [[], [], [], [], []]
-
         self.averages = {}
-        for x in self.name_data :
-            self.averages[x] = [0, 0, 0, 0, 0]
+        self.name_data = ["wait_time"]
+        for _ in self.name_data:
+            self.data[_] = {}
+            self.averages[_] = [0, 0, 0, 0, 0]
+            for i in range(1, 5):
+                self.data[_][i] = [[], [], [], [], []]
+
         self.rates = {}
         self.rates['departure'] = [0,0,0,0,0]
         self.rates['amber_departure'] = [0,0,0,0,0]
@@ -133,8 +134,11 @@ class Simulation:
 
     def collect_data(self):
         for i in range(1, 5):
-            self.data["wait_time"][i].append(self.traci.lane.getWaitingTime('l{}_0'.format(i)))
-            self.averages["wait_time"][i] += self.data["wait_time"][i][self.timestep]
+            average = 0
+            for j in range(1, 5):
+                self.data["wait_time"][i][j].append(self.traci.lane.getWaitingTime('l{}_{}_0'.format(i, j)))
+                average += self.data["wait_time"][i][j][self.timestep]
+            self.averages["wait_time"][i] += average
 
     def reset_rates(self) :
         self.rates = {}
@@ -206,12 +210,13 @@ class Simulation:
             #self.collect_arrival()
             #self.collect_departure()
             #self.update_tls()
-            #self.collect_data()
-            #self.timestep += 1
+            self.collect_data()
+            self.timestep += 1
             #self.runFlow()
         # self.myPlotting.plot(self.data,self.grids)
 
         self.traci.close()
+        print(self.averages)
 
 if __name__ == "__main__":
     myConfig = Config.Config()
