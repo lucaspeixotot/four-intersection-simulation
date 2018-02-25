@@ -1,0 +1,28 @@
+-------------------- analysis --------------------
+*** Smart summary
+count    67764.000000
+mean        47.409022
+std        163.610798
+min          0.000000
+25%          0.000000
+50%          0.000000
+75%          0.000000
+max       2784.000000
+Name: Wait time, dtype: float64
+
+*** Fixed summary
+count    67764.000000
+mean        88.215513
+std        132.227007
+min          0.000000
+25%          0.000000
+50%          5.000000
+75%        147.000000
+max       2247.000000
+Name: Wait time, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average = Fixed average
+HA : Smart average != Fixed average
+Mann-Whitney U test = 1546182220.5
+p-value = 0.0

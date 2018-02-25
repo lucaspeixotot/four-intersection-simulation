@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/connections_file.xsd">
+    <!--- L1 connections -->
+    <!-- Fixed traffic light connections -->
+	<connection from="l1_f" to="-l3_f"/>
+	<connection from="l1_f" to="-l4_f"/>
+    <!-- Smart light connections -->
+	<connection from="l1_s" to="-l3_s"/>
+	<connection from="l1_s" to="-l4_s"/>
+
+    <!--- L2 connections -->
+    <!-- Fixed traffic light connections -->
+	<connection from="l2_f" to="-l4_f"/>
+	<connection from="l2_f" to="-l1_f"/>
+    <!-- Smart light connections -->
+	<connection from="l2_s" to="-l4_s"/>
+	<connection from="l2_s" to="-l1_s"/>
+
+    <!--- L3 connections -->
+    <!-- Fixed traffic light connections -->
+	<connection from="l3_f" to="-l1_f"/>
+	<connection from="l3_f" to="-l2_f"/>
+    <!-- Smart light connections -->
+	<connection from="l3_s" to="-l1_s"/>
+	<connection from="l3_s" to="-l2_s"/>
+
+    <!--- L4 connections -->
+    <!-- Fixed traffic light connections -->
+	<connection from="l4_f" to="-l2_f"/>
+	<connection from="l4_f" to="-l3_f"/>
+    <!-- Smart light connections -->
+	<connection from="l4_s" to="-l2_s"/>
+	<connection from="l4_s" to="-l3_s"/>
+
+</connections>

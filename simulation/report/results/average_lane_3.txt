@@ -1,0 +1,99 @@
+-------------------- Wait time analysis --------------------
+*** Fixed summary
+count     1.000000
+mean     23.411477
+std            NaN
+min      23.411477
+25%      23.411477
+50%      23.411477
+75%      23.411477
+max      23.411477
+Name: Wait time, dtype: float64
+
+*** Smart summary
+count     1.000000
+mean     46.600663
+std            NaN
+min      46.600663
+25%      46.600663
+50%      46.600663
+75%      46.600663
+max      46.600663
+Name: Wait time, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average Wait time = Fixed average Wait time
+HA : Smart average Wait time != Fixed average Wait time
+Mann-Whitney U test = 0.0
+p-value = 0.5
+The p-value is larger than alpha=0.05, so with 95% confidence level we cannot reject the null hypothesis.
+-------------------- end analysis --------------------
+
+
+
+-------------------- Queue Length analysis --------------------
+*** Fixed summary
+count    1.000000
+mean     1.574876
+std           NaN
+min      1.574876
+25%      1.574876
+50%      1.574876
+75%      1.574876
+max      1.574876
+Name: Queue Length, dtype: float64
+
+*** Smart summary
+count    1.000000
+mean     2.022607
+std           NaN
+min      2.022607
+25%      2.022607
+50%      2.022607
+75%      2.022607
+max      2.022607
+Name: Queue Length, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average Queue Length = Fixed average Queue Length
+HA : Smart average Queue Length != Fixed average Queue Length
+Mann-Whitney U test = 0.0
+p-value = 0.5
+The p-value is larger than alpha=0.05, so with 95% confidence level we cannot reject the null hypothesis.
+-------------------- end analysis --------------------
+
+
+
+-------------------- Mean speeds analysis --------------------
+*** Fixed summary
+count     1.000000
+mean     15.443004
+std            NaN
+min      15.443004
+25%      15.443004
+50%      15.443004
+75%      15.443004
+max      15.443004
+Name: Mean speeds, dtype: float64
+
+*** Smart summary
+count     1.000000
+mean     15.671157
+std            NaN
+min      15.671157
+25%      15.671157
+50%      15.671157
+75%      15.671157
+max      15.671157
+Name: Mean speeds, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average Mean speeds = Fixed average Mean speeds
+HA : Smart average Mean speeds != Fixed average Mean speeds
+Mann-Whitney U test = 0.0
+p-value = 0.5
+The p-value is larger than alpha=0.05, so with 95% confidence level we cannot reject the null hypothesis.
+-------------------- end analysis --------------------
+
+
+

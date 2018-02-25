@@ -1,0 +1,28 @@
+-------------------- analysis --------------------
+*** Smart summary
+count    90302.000000
+mean         4.319760
+std          7.067056
+min          0.000000
+25%          0.000000
+50%          0.000000
+75%          7.000000
+max         33.000000
+Name: Queue Length, dtype: float64
+
+*** Fixed summary
+count    90302.000000
+mean         3.560464
+std          5.265927
+min          0.000000
+25%          0.000000
+50%          0.000000
+75%          7.000000
+max         26.000000
+Name: Queue Length, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average = Fixed average
+HA : Smart average != Fixed average
+Mann-Whitney U test = 4049036874.5
+p-value = 0.00229140413597

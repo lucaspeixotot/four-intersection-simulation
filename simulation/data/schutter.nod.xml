@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
+    <!-- Fixed traffic light nodes -->
+   <node id="center" x="-4000.0" y="0.0"  type="traffic_light"/>
+
+   <node id="left" x="-4500.0" y="0.0" type="priority"/>
+   <node id="right" x="-3500.0" y="0.0" type="priority"/>
+   <node id="down" x="-4000.0" y="-500.0" type="priority"/>
+   <node id="up" x="-4000.0" y="+500.0" type="priority"/>
+
+   <!-- smart light nodes -->
+   <node id="center_2" x="4000.0" y="0.0"  type="traffic_light"/>
+
+   <node id="left_2" x="3500.0" y="0.0" type="priority"/>
+   <node id="right_2" x="4500.0" y="0.0" type="priority"/>
+   <node id="down_2" x="4000.0" y="-500.0" type="priority"/>
+   <node id="up_2" x="4000.0" y="+500.0" type="priority"/>
+   
+</nodes>

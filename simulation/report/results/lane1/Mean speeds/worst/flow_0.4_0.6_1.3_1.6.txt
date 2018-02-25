@@ -1,0 +1,28 @@
+-------------------- analysis --------------------
+*** Smart summary
+count    89879.000000
+mean        15.685245
+std          6.527586
+min          0.000000
+25%         12.240196
+50%         19.440000
+75%         19.440000
+max         19.440000
+Name: Mean speeds, dtype: float64
+
+*** Fixed summary
+count    89879.000000
+mean        16.463859
+std          5.681317
+min          0.000000
+25%         15.760434
+50%         19.440000
+75%         19.440000
+max         19.440000
+Name: Mean speeds, dtype: float64
+
+----- Hypothesis test with Mann-Whitney U test ----
+H0 : Smart average = Fixed average
+HA : Smart average != Fixed average
+Mann-Whitney U test = 3873987624.5
+p-value = 9.18293936362e-83

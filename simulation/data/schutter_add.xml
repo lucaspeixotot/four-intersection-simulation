@@ -1,0 +1,26 @@
+<additional>
+
+    <!-- Fixed traffic light detectors -->
+    <laneAreaDetector id="e2_l1_f" lane="l1_f_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l1_f.out" />
+    <laneAreaDetector id="e2_l2_f" lane="l2_f_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l2_f.out" />
+    <laneAreaDetector id="e2_l3_f" lane="l3_f_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l3_f.out" />
+    <laneAreaDetector id="e2_l4_f" lane="l4_f_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l4_f.out" />
+
+    <!-- Smart Light detectors -->
+    <laneAreaDetector id="e2_l1_s" lane="l1_s_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l1_s.out" />
+    <laneAreaDetector id="e2_l2_s" lane="l2_s_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l2_s.out" />
+    <laneAreaDetector id="e2_l3_s" lane="l3_s_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l3_s.out" />
+    <laneAreaDetector id="e2_l4_s" lane="l4_s_0" pos = "0" friendlyPos = "false" freq="1" file="../report/out/e2_l4_s.out" />
+
+    <!-- Departure detectors -->
+    <laneAreaDetector id="departure_l1" lanes="l1_s_0 -l3_s_0" pos = "495" endPos = "20" friendlyPos = "false" freq="1" file="../report/out/l1_departure.out" />
+    <laneAreaDetector id="departure_l2" lanes="l2_s_0 -l4_s_0" pos = "495" endPos = "20" friendlyPos = "false" freq="1" file="../report/out/l2_departure.out" />
+    <laneAreaDetector id="departure_l3" lanes="l3_s_0 -l1_s_0" pos = "495" endPos = "20" friendlyPos = "false" freq="1" file="../report/out/l3_departure.out" />
+    <laneAreaDetector id="departure_l4" lanes="l4_s_0 -l2_s_0" pos = "495" endPos = "20" friendlyPos = "false" freq="1" file="../report/out/l4_departure.out" />
+
+    <!-- Arrival detectors -->
+    <laneAreaDetector id="arrival_l1" lane="l1_s_0" pos = "0" length="50" friendlyPos = "false" freq="1" file="../report/out/l1_arrival.out" />
+    <laneAreaDetector id="arrival_l2" lane="l2_s_0" pos = "0" length="50" friendlyPos = "false" freq="1" file="../report/out/l2_arrival.out" />
+    <laneAreaDetector id="arrival_l3" lane="l3_s_0" pos = "0" length="50" friendlyPos = "false" freq="1" file="../report/out/l3_arrival.out" />
+    <laneAreaDetector id="arrival_l4" lane="l4_s_0" pos = "0" length="50" friendlyPos = "false" freq="1" file="../report/out/l4_arrival.out" />
+</additional>
