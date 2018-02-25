@@ -29,8 +29,8 @@ class Config:
         self.options = self.get_options()
 
         if self.options.nogui:
-            self.sumoBinary = self.checkBinary('sumo')
+            self.sumoBinary = self.checkBinary('sumo-gui')
         else:
-            self.sumoBinary = self.checkBinary('sumo')
-        self.traci.start([self.sumoBinary, "-c", "data/schutter.sumocfg", "--additional-files", "data/schutter_add.xml",
+            self.sumoBinary = self.checkBinary('sumo-gui')
+        self.traci.start([self.sumoBinary, "-c", "data/schutter.sumocfg",
                      "--tripinfo-output", "tripinfo.xml", "--step-length", "1"])

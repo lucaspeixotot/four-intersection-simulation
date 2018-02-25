@@ -7,8 +7,6 @@ import sys
 from multiprocessing import Process, Value, Lock
 import Simulation
 import Config
-import Plotting
-import Statistic
 import ManagerDir
 
 class SimulationManager :
@@ -25,8 +23,6 @@ class SimulationManager :
         self.metric_results = ["inconclusive", "best", "worst"]
         self.ordem_simulations = []
         self.simulations = {}
-        self.plotting = Plotting.Plotting()
-        self.statistic = Statistic.Statistic()
         self.managerdir = ManagerDir.ManagerDir()
         self.managerdir.create("report/csv")
         for k in range(1, 5) :
@@ -65,10 +61,10 @@ class SimulationManager :
                 finish_simulations.add(k)
         except :
             pass
-        for i in range(1,17,1):
-            for j in range(1,17,1):
-                for k in range(i,17,1):
-                    for l in range(j,17,1):
+        for i in range(1,2,1):
+            for j in range(1,2,1):
+                for k in range(i,2,1):
+                    for l in range(j,2,1):
                         flow = [i/10.0,j/10.0,k/10.0,l/10.0]
                         name = str(i) + "_" + str(j) + "_" + str(k) + "_" + str(l)
                         if name in finish_simulations :

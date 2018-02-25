@@ -2,16 +2,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from __future__ import print_function
-import Plotting
 import Config
-import Solve
-import Statistic
 
 class Simulation:
-    def __init__(self, plotting, traci, managerdir):
-        self.myPlotting = plotting
+    def __init__(self, traci):
         self.traci = traci
-        self.manager = managerdir
 
 
     def initialize(self):
@@ -193,6 +188,7 @@ class Simulation:
 
     def report(self):
         # Might be useful to return .JSON
+        pass
 
     def get_averages(self):
         for i in self.name_data:
@@ -203,36 +199,34 @@ class Simulation:
 
     def run(self, rates):
         self.initialize()
-        self.prepare_context()
-        self.init_flow(rates)
+        # self.prepare_context()
+        # self.init_flow(rates)
         while self.traci.simulation.getMinExpectedNumber() > 0:
             self.traci.simulationStep()
-            self.collect_arrival()
-            self.collect_departure()
-            self.update_tls()
-            self.collect_data()
-            self.timestep += 1
-            self.runFlow()
+            #self.collect_arrival()
+            #self.collect_departure()
+            #self.update_tls()
+            #self.collect_data()
+            #self.timestep += 1
+            #self.runFlow()
         # self.myPlotting.plot(self.data,self.grids)
 
         self.traci.close()
 
-"""
 if __name__ == "__main__":
     myConfig = Config.Config()
-    myPlotting = Plotting.Plotting()
-    mySimulation = Simulation(myPlotting,myConfig.traci)
-    myStatistic = Statistic.Statistic()
+    mySimulation = Simulation(myConfig.traci)
+    myConfig.run()
+    mySimulation.run([1,2,3,4])
 
-    for i in range(1, 11, 1):
-        for j in range(1, 11 , 1):
-            for k in range(1, 11,1):
-                for l in range(1,11,1):
-                    myConfig.run()
-                    print('{} - {} - {} - {}'.format(i, j, k, l))
-                    mySimulation.run([i/10.0,j/10.0,k/10.0,l/10.0])
-                    averages = mySimulation.get_averages()
-                    myStatistic.prepare_datas(averages)
-                    myStatistic.run_unit_result([i/10.0,j/10.0,k/10.0,l/10.0], mySimulation.data)
-    myStatistic.run_total_result()
-"""
+#     for i in range(1, 11, 1):
+#         for j in range(1, 11 , 1):
+#             for k in range(1, 11,1):
+#                 for l in range(1,11,1):
+#                     myConfig.run()
+#                     print('{} - {} - {} - {}'.format(i, j, k, l))
+#                     mySimulation.run([i/10.0,j/10.0,k/10.0,l/10.0])
+#                     averages = mySimulation.get_averages()
+#                     myStatistic.prepare_datas(averages)
+#                     myStatistic.run_unit_result([i/10.0,j/10.0,k/10.0,l/10.0], mySimulation.data)
+#     myStatistic.run_total_result()
