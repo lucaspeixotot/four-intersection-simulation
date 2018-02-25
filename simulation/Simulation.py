@@ -45,18 +45,13 @@ class Simulation:
 
         # Rates/datas
         self.data = {}
-        self.name_data = [ "queue" , "wait_time" , "mean_speeds" , 'travel_time']
-        self.name_type = ["f"]
+        self.name_data = "wait_time"
         for _ in self.name_data:
-            self.data[_] = {}
-            for __ in self.name_type:
-                self.data[_][__] = [[], [], [], [], []]
+            self.data[_] = [[], [], [], [], []]
 
         self.averages = {}
         for x in self.name_data :
-            self.averages[x] = {}
-            for xx in self.name_type :
-                self.averages[x][xx] = [0, 0, 0, 0, 0]
+            self.averages[x] = [0, 0, 0, 0, 0]
         self.rates = {}
         self.rates['departure'] = [0,0,0,0,0]
         self.rates['amber_departure'] = [0,0,0,0,0]
@@ -143,18 +138,8 @@ class Simulation:
 
     def collect_data(self):
         for i in range(1, 5):
-            for j in ['f'] :
-                self.data["wait_time"][j][i].append(self.traci.lane.getWaitingTime('l{}_{}_0'.format(i,j)))
-                self.averages["wait_time"][j][i] += self.data["wait_time"][j][i][self.timestep]
-
-                self.data["mean_speeds"][j][i].append(self.traci.lane.getLastStepMeanSpeed('l{}_{}_0'.format(i,j)))
-                self.averages["mean_speeds"][j][i] += self.data["mean_speeds"][j][i][self.timestep]
-
-                self.data["queue"][j][i].append(self.traci.lanearea.getJamLengthVehicle("e2_l{}_{}".format(i, j)))
-                self.averages["queue"][j][i] += self.data["queue"][j][i][self.timestep]
-
-                self.data['travel_time'][j][i].append( (self.traci.lane.getTraveltime('l{}_{}_0'.format(i,j)))/100000 )
-            self.J1_Fixed += self.data["queue"]['f'][i][self.timestep] if not i % 2 else 2 * self.data["queue"]['f'][i][self.timestep]
+            self.data["wait_time"][i].append(self.traci.lane.getWaitingTime('l{}_0'.format(i)))
+            self.averages["wait_time"][i] += self.data["wait_time"][i][self.timestep]
 
     def reset_rates(self) :
         self.rates = {}
