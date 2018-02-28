@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Sun 25 Feb 2018 05:42:42 PM -03 by Netedit Version v0_32_0+0424-45083a6
+<!-- generated on Wed 28 Feb 2018 02:13:31 PM -03 by Netedit Version v0_32_0+0424-45083a6
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="schutter.net.xml"/>
+        <sumo-net-file value="data/schutter.net.xml"/>
     </input>
 
     <output>
-        <output-file value="schutter.net.xml"/>
+        <output-file value="data/schutter.net.xml"/>
     </output>
 
     <processing>
@@ -263,7 +263,7 @@
         <phase duration="42" state="rrGGrrGG"/>
         <phase duration="3" state="rryyrryy"/>
     </tlLogic>
-    <tlLogic id="gneJ8" type="static" programID="0" offset="0">
+    <tlLogic id="center_4" type="static" programID="0" offset="0">
         <phase duration="42" state="GGrrGGrr"/>
         <phase duration="3" state="yyrryyrr"/>
         <phase duration="42" state="rrGGrrGG"/>
@@ -349,32 +349,32 @@
     <connection from="l1_2" to="-l3_2" fromLane="0" toLane="0" via=":center_2_7_0" tl="center_2" linkIndex="7" dir="s" state="o"/>
     <connection from="l1_3" to="-l4_3" fromLane="0" toLane="0" via=":center_3_6_0" tl="center_3" linkIndex="6" dir="r" state="o"/>
     <connection from="l1_3" to="-l3_3" fromLane="0" toLane="0" via=":center_3_7_0" tl="center_3" linkIndex="7" dir="s" state="o"/>
-    <connection from="l1_4" to="-l4_4" fromLane="0" toLane="0" via=":center_4_6_0" tl="gneJ8" linkIndex="6" dir="r" state="o"/>
-    <connection from="l1_4" to="-l3_4" fromLane="0" toLane="0" via=":center_4_7_0" tl="gneJ8" linkIndex="7" dir="s" state="o"/>
+    <connection from="l1_4" to="-l4_4" fromLane="0" toLane="0" via=":center_4_6_0" tl="center_4" linkIndex="6" dir="r" state="o"/>
+    <connection from="l1_4" to="-l3_4" fromLane="0" toLane="0" via=":center_4_7_0" tl="center_4" linkIndex="7" dir="s" state="o"/>
     <connection from="l2_1" to="-l1_1" fromLane="0" toLane="0" via=":center_0_0" tl="center" linkIndex="0" dir="r" state="o"/>
     <connection from="l2_1" to="-l4_1" fromLane="0" toLane="0" via=":center_1_0" tl="center" linkIndex="1" dir="s" state="o"/>
     <connection from="l2_2" to="-l1_2" fromLane="0" toLane="0" via=":center_2_0_0" tl="center_2" linkIndex="0" dir="r" state="o"/>
     <connection from="l2_2" to="-l4_2" fromLane="0" toLane="0" via=":center_2_1_0" tl="center_2" linkIndex="1" dir="s" state="o"/>
     <connection from="l2_3" to="-l1_3" fromLane="0" toLane="0" via=":center_3_0_0" tl="center_3" linkIndex="0" dir="r" state="o"/>
     <connection from="l2_3" to="-l4_3" fromLane="0" toLane="0" via=":center_3_1_0" tl="center_3" linkIndex="1" dir="s" state="o"/>
-    <connection from="l2_4" to="-l1_4" fromLane="0" toLane="0" via=":center_4_0_0" tl="gneJ8" linkIndex="0" dir="r" state="o"/>
-    <connection from="l2_4" to="-l4_4" fromLane="0" toLane="0" via=":center_4_1_0" tl="gneJ8" linkIndex="1" dir="s" state="o"/>
+    <connection from="l2_4" to="-l1_4" fromLane="0" toLane="0" via=":center_4_0_0" tl="center_4" linkIndex="0" dir="r" state="o"/>
+    <connection from="l2_4" to="-l4_4" fromLane="0" toLane="0" via=":center_4_1_0" tl="center_4" linkIndex="1" dir="s" state="o"/>
     <connection from="l3_1" to="-l2_1" fromLane="0" toLane="0" via=":center_2_0" tl="center" linkIndex="2" dir="r" state="o"/>
     <connection from="l3_1" to="-l1_1" fromLane="0" toLane="0" via=":center_3_0" tl="center" linkIndex="3" dir="s" state="o"/>
     <connection from="l3_2" to="-l2_2" fromLane="0" toLane="0" via=":center_2_2_0" tl="center_2" linkIndex="2" dir="r" state="o"/>
     <connection from="l3_2" to="-l1_2" fromLane="0" toLane="0" via=":center_2_3_0" tl="center_2" linkIndex="3" dir="s" state="o"/>
     <connection from="l3_3" to="-l2_3" fromLane="0" toLane="0" via=":center_3_2_0" tl="center_3" linkIndex="2" dir="r" state="o"/>
     <connection from="l3_3" to="-l1_3" fromLane="0" toLane="0" via=":center_3_3_0" tl="center_3" linkIndex="3" dir="s" state="o"/>
-    <connection from="l3_4" to="-l2_4" fromLane="0" toLane="0" via=":center_4_2_0" tl="gneJ8" linkIndex="2" dir="r" state="o"/>
-    <connection from="l3_4" to="-l1_4" fromLane="0" toLane="0" via=":center_4_3_0" tl="gneJ8" linkIndex="3" dir="s" state="o"/>
+    <connection from="l3_4" to="-l2_4" fromLane="0" toLane="0" via=":center_4_2_0" tl="center_4" linkIndex="2" dir="r" state="o"/>
+    <connection from="l3_4" to="-l1_4" fromLane="0" toLane="0" via=":center_4_3_0" tl="center_4" linkIndex="3" dir="s" state="o"/>
     <connection from="l4_1" to="-l3_1" fromLane="0" toLane="0" via=":center_4_0" tl="center" linkIndex="4" dir="r" state="o"/>
     <connection from="l4_1" to="-l2_1" fromLane="0" toLane="0" via=":center_5_0" tl="center" linkIndex="5" dir="s" state="o"/>
     <connection from="l4_2" to="-l3_2" fromLane="0" toLane="0" via=":center_2_4_0" tl="center_2" linkIndex="4" dir="r" state="o"/>
     <connection from="l4_2" to="-l2_2" fromLane="0" toLane="0" via=":center_2_5_0" tl="center_2" linkIndex="5" dir="s" state="o"/>
     <connection from="l4_3" to="-l3_3" fromLane="0" toLane="0" via=":center_3_4_0" tl="center_3" linkIndex="4" dir="r" state="o"/>
     <connection from="l4_3" to="-l2_3" fromLane="0" toLane="0" via=":center_3_5_0" tl="center_3" linkIndex="5" dir="s" state="o"/>
-    <connection from="l4_4" to="-l3_4" fromLane="0" toLane="0" via=":center_4_4_0" tl="gneJ8" linkIndex="4" dir="r" state="o"/>
-    <connection from="l4_4" to="-l2_4" fromLane="0" toLane="0" via=":center_4_5_0" tl="gneJ8" linkIndex="5" dir="s" state="o"/>
+    <connection from="l4_4" to="-l3_4" fromLane="0" toLane="0" via=":center_4_4_0" tl="center_4" linkIndex="4" dir="r" state="o"/>
+    <connection from="l4_4" to="-l2_4" fromLane="0" toLane="0" via=":center_4_5_0" tl="center_4" linkIndex="5" dir="s" state="o"/>
 
     <connection from=":center_0" to="-l1_1" fromLane="0" toLane="0" dir="r" state="M"/>
     <connection from=":center_1" to="-l4_1" fromLane="0" toLane="0" dir="s" state="M"/>
